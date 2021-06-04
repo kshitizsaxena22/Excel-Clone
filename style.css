@@ -1,0 +1,87 @@
+body{
+    margin: 0;
+    overflow: hidden;
+    font-size: 14;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.container{
+    height: 100vh;
+     
+}
+
+.title-bar{
+    height: 5vh;
+    background-color: #107c47;
+    display: flex;
+    justify-content: center;   /*align horizontally for row*/
+    align-items: center; /*align vertically for row*/
+    color: white;
+}
+
+.menu-bar{
+    height: 5vh;
+    background-color: #107c47;
+    display: flex;
+}
+
+.menu-item{
+    padding-left: 10px;
+    padding-right: 10px;
+    color: white;
+    font-size: 18;
+    display: flex;
+    align-items: center;
+}
+
+.menu-item.selected{
+    background-color: #fff;
+    color: #107c47;
+}
+
+.menu-icon-bar{
+    height: 6vh;
+    
+    display: flex;
+    background-color: rgb(241, 238, 238);
+}
+.menu-icon{
+    padding-left: 10px;
+    padding-right: 10px;
+    align-items: center;
+    height: 100%;
+    display: flex;
+}
+.menu-icon:hover{
+    background-color: lightgray;
+    cursor: pointer;
+}
+
+
+.menu-item:hover{
+    background-color: rgb(5, 44, 44);
+    cursor: pointer;
+
+}
+.menu-item.selected:hover{
+    background-color: #fff;
+    cursor: default;
+}
+.menu-icon-bar{
+    height: 6vh;
+}
+
+.formula-bar{
+    height: 5vh;
+}
+
+.data-container{
+    height: 74vh;
+}
+
+.sheet-bar{
+    height: 4vh;
+}
