@@ -103,6 +103,7 @@ body {
     height: 30px;
     width: calc(100vw - 30px);
     border: 1px solid lightgray;
+    display: flex;
 }
 
 .row-name-container{
@@ -151,6 +152,7 @@ body {
     width: calc(100vw - 110px);
     align-items: center;
     overflow: hidden;
+    justify-content: center;
 }
 .sheet-tab {
     border-bottom: 4px solid #107c41;
@@ -167,4 +169,21 @@ body {
 
 .sheet-tab:hover {
     cursor: default;
+}
+
+.column-name{
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: 1px solid lightgray;
+  font-weight: bold;
+}
+
+.row-name{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 25px;
+  border-bottom: 1px solid lightgray;
 }
