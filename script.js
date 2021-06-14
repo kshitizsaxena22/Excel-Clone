@@ -107,15 +107,34 @@ $(document).ready(function () {
       $(this).addClass("selected");
     } else {
       $(".input-cell.selected").removeClass("selected");
-      $(this).addClass("selected");
     }
+    $(this).addClass("selected");
+    changeHeader(this);
   });
 
-  function changeHeader()
-  {
-      
+  function changeHeader(ele) {
+    let [rowId, colId] = getRowCol(ele);
+    let cellInfo = defaultProperties;
+    if (
+      cellData[selectedSheet][rowId] &&
+      cellData[selectedSheet][rowId][colId]
+    ) {
+      cellInfo = cellData[selectedSheet][rowId][colId];
+    }
+    cellInfo["font-weight"]
+      ? $(".icon-bold").addClass("selected")
+      : $(".icon-bold").removeClass("selected");
+    cellInfo["font-style"]
+      ? $(".icon-italic").addClass("selected")
+      : $(".icon-italic").removeClass("selected");
+    cellInfo["text-decoration"]
+      ? $(".icon-underline").addClass("selected")
+      : $(".icon-underline").removeClass("selected");
+
+    let alignment = cellInfo["text-align"];
+    $(".align-icon.selected").removeClass("selected");
+    $(".icon-align-" + alignment).addClass("selected");
   }
-  
 
   $(".input-cell").dblclick(function () {
     $(".input-cell.selected").removeClass("selected");
@@ -158,13 +177,15 @@ function updateCell(property, value, defaultPossible) {
       cellData[selectedSheet][rowId][colId][property] = value;
     }
 
-    if(defaultPossible && (JSON.stringify(cellData[selectedSheet][rowId][colId]) === JSON.stringify(defaultProperties)))
-    {
-        delete cellData[selectedSheet][rowId][colId];
-        if(Object.keys(cellData[selectedSheet][rowId]).length == 0)
-        {
-            delete cellData[selectedSheet][rowId];
-        }
+    if (
+      defaultPossible &&
+      JSON.stringify(cellData[selectedSheet][rowId][colId]) ===
+        JSON.stringify(defaultProperties)
+    ) {
+      delete cellData[selectedSheet][rowId][colId];
+      if (Object.keys(cellData[selectedSheet][rowId]).length == 0) {
+        delete cellData[selectedSheet][rowId];
+      }
     }
   });
 
@@ -195,25 +216,18 @@ $(".icon-underline").click(function () {
   }
 });
 
-
-$(".icon-align-left").click(function()
-{
-    if(!$(this).hasClass("selected"))
-    {
-        updateCell("text-align","left",true);
-    }
+$(".icon-align-left").click(function () {
+  if (!$(this).hasClass("selected")) {
+    updateCell("text-align", "left", true);
+  }
 });
-$(".icon-align-center").click(function()
-{
-    if(!$(this).hasClass("selected"))
-    {
-        updateCell("text-align","center",false);
-    }
+$(".icon-align-center").click(function () {
+  if (!$(this).hasClass("selected")) {
+    updateCell("text-align", "center", false);
+  }
 });
-$(".icon-align-right").click(function()
-{
-    if(!$(this).hasClass("selected"))
-    {
-        updateCell("text-align","right",false);
-    }
+$(".icon-align-right").click(function () {
+  if (!$(this).hasClass("selected")) {
+    updateCell("text-align", "right", false);
+  }
 });
